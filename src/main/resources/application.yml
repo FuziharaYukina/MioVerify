@@ -1,0 +1,83 @@
+server:
+  port: 8080
+  servlet:
+    application-display-name: MioVerify Alpha
+spring:
+  servlet:
+    multipart:
+      # 允许文件上传
+      enabled: true
+      # 最大上传文件尺寸
+      max-file-size: 800KB
+      # 最大上传请求尺寸
+      max-request-size: 2MB
+  profiles:
+    # 选择数据库，"test-sqlite" 或 "test-mysql"
+    active: test-sqlite
+mybatis-plus:
+  global-config:
+    banner: false
+mioverify:
+  token:
+    # 给角色(Profile)签名的文本
+    signature: ahqubajns72a
+    # token暂时失效时间
+    expire: 10m
+    # token永久过期时间
+    invalid: 1h
+  session:
+    # session过期时间
+    expire: 6m
+  security:
+    # 公钥路径
+    public-key-loc: keys/public.pem
+    # 对应私钥路径
+    private-key-loc: keys/private.pem
+    sign-algorithm: SHA1withRSA
+    # 批量获取角色(Profile)API最大限制数量
+    profile-batch-limit: 5
+  texture:
+    # 材质存储位置
+    storage-loc: textures
+    # 默认皮肤存储位置
+    default-skin-loc: textures/skin/default.png
+    # 服务器元数据，详见Yggdrasil API
+  props:
+    meta:
+      server-name: 'MioVerify 验证服务器'
+      implementation-name: mioverify
+      implementation-version: '0.0.1'
+      links:
+        # 主页地址
+        home-page: https://www.baidu.com
+        # 注册页地址
+        register: https://www.baidu.com
+    skin-domains:
+      - 'baidu.com'
+    # 并没有实现SSL证书，这只是返回Profile加上的地址是否https开头
+    use-https: false
+    server-domain: localhost
+---
+# 使用MySQL时的配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据库地址
+    url: jdbc:mysql://localhost:3306/数据库名
+    # 用户名
+    username: root
+    # 密码
+    password: password
+  config:
+    activate:
+      on-profile: test-mysql
+---
+# 使用SQLite时的配置
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    # 数据库地址
+    url: jdbc:sqlite:data.db
+  config:
+    activate:
+      on-profile: test-sqlite
