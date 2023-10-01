@@ -10,7 +10,7 @@ MioVerify是一个根据 *[Yggdrasil 服务端技术规范](https://github.com/y
 
 另外，如果游戏服务器也使用了authlib-injector，就可以做到一样的正版验证效果。
 
-Yggdrasil API仿照Mojang验证服务器API，设计出了一套规范。而MioVerify正是按照这个规范开发出的Web服务器。实际上，每个人都可以设计一个自己的验证服务器。
+Yggdrasil API是一套规范，定义了如何实现身份验证。而MioVerify正是按照这个规范开发出的Web服务器。实际上，每个人都可以设计一个自己的验证服务器。
 
 **目前所有的主流启动器都已支持外置登录。**
 
