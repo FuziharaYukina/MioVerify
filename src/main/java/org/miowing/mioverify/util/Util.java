@@ -1,5 +1,6 @@
 package org.miowing.mioverify.util;
 
+import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,6 +36,9 @@ public class Util implements InitializingBean {
         publicKey = keyPair.getPublic();
         privateKey = keyPair.getPrivate();
         serverMeta.setSignaturePublicKey(getPublicKeyStr());
+    }
+    public static String genUUID() {
+        return IdUtil.simpleUUID();
     }
     public String getPublicKeyStr() {
         try {

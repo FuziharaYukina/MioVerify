@@ -37,6 +37,20 @@ public class DataUtil implements InitializingBean {
     private Duration sessionExpire;
     @Value("${mioverify.security.profile-batch-limit}")
     private int profileBatchLimit;
+    @Value("${mioverify.extern.register.enabled}")
+    private boolean allowRegister;
+    @Value("${mioverify.extern.register.allow-user}")
+    private boolean allowRegUser;
+    @Value("${mioverify.extern.register.allow-profile}")
+    private boolean allowRegProfile;
+    @Value("${mioverify.extern.register.permission-key.enabled}")
+    private boolean usePermKey;
+    @Value("${mioverify.extern.register.permission-key.key}")
+    private String permKey;
+    @Value("${mioverify.extern.register.profile-strict}")
+    private boolean profileStrict;
+    @Value("${mioverify.extern.multi-profile-name}")
+    private boolean multiProfileName;
     @Override
     public void afterPropertiesSet() throws Exception {
         log.info("Reading data from application file...");

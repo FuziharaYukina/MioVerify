@@ -14,14 +14,41 @@ spring:
   profiles:
     # 选择数据库，"test-sqlite" 或 "test-mysql"
     active: test-sqlite
+  data:
+    # 设置Redis配置
+    redis:
+      # 默认用本地redis，如果要使用远程，请用url模式设置：
+      # url: ...
+      host: localhost
+      port: 6379
 mybatis-plus:
   global-config:
     banner: false
 mioverify:
+  # 扩展API配置项
+  extern:
+    register:
+      # 开启注册API
+      enabled: false
+      # 允许注册用户(注册API开启时)
+      allow-user: true
+      # 允许注册角色(注册API开启时)
+      allow-profile: false
+      # 注册角色(Profile)时是否需要验证密码，推荐开启
+      profile-strict: true
+      # 使用注册和设置API时是否开启密钥
+      # 必须要密钥正确才能操作
+      permission-key:
+        # 启用密钥验证
+        enabled: false
+        # 密钥
+        key: admin123098
+    # 是否允许重复角色名(仅发生在注册和修改)
+    multi-profile-name: true
   token:
     # 给角色(Profile)签名的文本
-    signature: ahqubajns72a
-    # token暂时失效时间
+    signature: 'abcd273nsi179a'
+    # token暂时失效时间，期间可以被刷新
     expire: 10m
     # token永久过期时间
     invalid: 1h
@@ -33,6 +60,7 @@ mioverify:
     public-key-loc: keys/public.pem
     # 对应私钥路径
     private-key-loc: keys/private.pem
+    # 签名算法，推荐不更改
     sign-algorithm: SHA1withRSA
     # 批量获取角色(Profile)API最大限制数量
     profile-batch-limit: 5
@@ -44,18 +72,23 @@ mioverify:
     # 服务器元数据，详见Yggdrasil API
   props:
     meta:
+      # 将会显示在启动器
       server-name: 'MioVerify 验证服务器'
+      # 实现的名称
       implementation-name: mioverify
+      # 实现的版本
       implementation-version: '0.0.1'
       links:
         # 主页地址
         home-page: https://www.baidu.com
         # 注册页地址
         register: https://www.baidu.com
+    # 材质域名白名单，语法详见Yggdrasil API
     skin-domains:
       - 'baidu.com'
-    # 并没有实现SSL证书，这只是返回Profile加上的地址是否https开头
+    # 并没有实现SSL证书，这只是决定返回角色(Profile)加上的地址是否https开头
     use-https: false
+    # 服务器域名，将会拼接在角色材质url中
     server-domain: localhost
 ---
 # 使用MySQL时的配置

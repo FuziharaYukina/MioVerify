@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.miowing</groupId>
     <artifactId>MioVerify</artifactId>
-    <version>0.9.7-SNAPSHOT</version>
+    <version>1.0.0-BETA</version>
     <name>MioVerify</name>
     <description>MioVerify</description>
     <properties>
