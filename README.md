@@ -73,6 +73,8 @@ Yggdrasil API仿照Mojang验证服务器API，设计出了一套规范。而MioV
 
 此特性必须要在配置中启用。
 
+`/extern/register/user`
+
 ```json
 {
   "username": "用户名(请不要与已有的重复)",
@@ -85,6 +87,8 @@ Yggdrasil API仿照Mojang验证服务器API，设计出了一套规范。而MioV
 ### 注册角色
 
 此特性必须要在配置中启用。
+
+`/extern/register/profile`
 
 ```json
 {
