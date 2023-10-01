@@ -50,7 +50,10 @@ public class ExceptionProcessor {
                     AttackDefenseException.class,
                     ForbiddenUploadException.class,
                     ProfileMismatchException.class,
-                    TextureDeleteException.class
+                    TextureDeleteException.class,
+                    FeatureNotSupportedException.class,
+                    DuplicateUserNameException.class,
+                    DuplicateProfileNameException.class
             }
     )
     public ResponseEntity<?> handleForbidden() {
