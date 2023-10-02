@@ -46,7 +46,7 @@ public class SessionController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     @GetMapping("/hasJoined")
-    public ProfileShow hasJoined(String username, String serverId) {
+    public ProfileShow hasJoined(String username /*in fact profileName*/, String serverId) {
         return util.profileToShow(sessionUtil.verifySession(serverId, username), true);
     }
     @GetMapping("/profile/{uuid}")

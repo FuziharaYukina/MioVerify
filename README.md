@@ -1,6 +1,6 @@
 # MioVerify
 
-![Static Badge](https://img.shields.io/badge/version-v1.1.0--BETA-blue) ![Static Badge](https://img.shields.io/badge/java-17-purple) ![Static Badge](https://img.shields.io/badge/developer-Fuzihara_Yukina-orange) ![Static Badge](https://img.shields.io/badge/for-Minecraft_Java_Edition-green)
+![Static Badge](https://img.shields.io/badge/version-v1.2.0--BETA-blue) ![Static Badge](https://img.shields.io/badge/java-17-purple) ![Static Badge](https://img.shields.io/badge/developer-Fuzihara_Yukina-orange) ![Static Badge](https://img.shields.io/badge/for-Minecraft_Java_Edition-green)
 
 MioVerify是一个根据 *[Yggdrasil 服务端技术规范](https://github.com/yushijinhun/authlib-injector/wiki/Yggdrasil-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%A7%84%E8%8C%83)* 实现的MC身份验证服务器。
 

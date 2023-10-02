@@ -2,6 +2,7 @@ package org.miowing.mioverify.util;
 
 import org.miowing.mioverify.exception.InvalidSessionException;
 import org.miowing.mioverify.exception.InvalidTokenException;
+import org.miowing.mioverify.exception.ProfileNotFoundException;
 import org.miowing.mioverify.exception.UserMismatchException;
 import org.miowing.mioverify.pojo.AToken;
 import org.miowing.mioverify.pojo.Profile;
@@ -22,7 +23,7 @@ public class SessionUtil {
     private StringRedisTemplate redisTemplate;
     @Autowired
     private ProfileService profileService;
-    public Profile verifySession(String serverId, String username) {
+    public Profile verifySession(String serverId, String profileName) {
         if (Boolean.FALSE.equals(redisTemplate.hasKey(SESSION_PREF + serverId))) {
             throw new InvalidSessionException();
         }
@@ -31,7 +32,11 @@ public class SessionUtil {
         if (aToken == null) {
             throw new InvalidTokenException();
         }
-        if (!username.equals(aToken.name())) {
+        Profile profile = profileService.getById(aToken.bindProfile());
+        if (profile == null) {
+            throw new ProfileNotFoundException();
+        }
+        if (!profileName.equals(profile.getName())) {
             throw new UserMismatchException();
         }
         return profileService.getById(aToken.bindProfile());
