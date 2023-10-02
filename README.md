@@ -1,6 +1,6 @@
 # MioVerify
 
-![Static Badge](https://img.shields.io/badge/version-v1.0.0--BETA-blue) ![Static Badge](https://img.shields.io/badge/java-17-purple) ![Static Badge](https://img.shields.io/badge/developer-Fuzihara_Yukina-orange) ![Static Badge](https://img.shields.io/badge/for-Minecraft_Java_Edition-green)
+![Static Badge](https://img.shields.io/badge/version-v1.1.0--BETA-blue) ![Static Badge](https://img.shields.io/badge/java-17-purple) ![Static Badge](https://img.shields.io/badge/developer-Fuzihara_Yukina-orange) ![Static Badge](https://img.shields.io/badge/for-Minecraft_Java_Edition-green)
 
 MioVerify是一个根据 *[Yggdrasil 服务端技术规范](https://github.com/yushijinhun/authlib-injector/wiki/Yggdrasil-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%A7%84%E8%8C%83)* 实现的MC身份验证服务器。
 
@@ -79,7 +79,7 @@ Yggdrasil API是一套规范，定义了如何实现身份验证。而MioVerify�
 {
   "username": "用户名(请不要与已有的重复)",
   "password": "密码",
-  "preferredLang": "偏好语言代号(不包含则默认为zh_CN",
+  "preferredLang": "偏好语言代号(不包含则默认为zh_CN)",
   "key": "密钥(配置中开启permission-key才必须包含)"
 }
 ```
@@ -101,12 +101,35 @@ Yggdrasil API是一套规范，定义了如何实现身份验证。而MioVerify�
 }
 ```
 
+## 材质API
+
+目前MioVerify实现类皮肤站功能用的是内嵌的实现，每次请求角色(Profile)json时中的材质url的域名在`application.yml`中`server-domain`定义。如果服务器的域名是xxx.com，那么url将会类似这样：
+
+```json
+"url": "http://xxx.com/texture/hash/{hash}"
+```
+
+另外，如果`use-http`选项为`true`，将会是这样的：
+
+```json
+"url": "https://xxx.com/texture/hash/{hash}"
+```
+
+然而，MioVerify**并没有真正实现**SSL证书支持，此功能将会在后续加入。
+
+特别地，如果要获取默认的皮肤(可以在skins文件夹下更改)，将会是以下：
+
+```plaintext
+http(s)://xxx.com/texture/skin/default
+```
+
 ## 待实现
 
 * API地址指示(ALI)
 * 动态的材质资源来源
 * 密码密文存储
-* 后台管理网页
+* 域名和SSL完整支持
+* 后台管理网页(可能)
 * ...
 
 ## 开发信息

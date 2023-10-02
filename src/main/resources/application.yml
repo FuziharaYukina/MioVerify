@@ -1,5 +1,20 @@
 server:
+  # http端口，开启SSL时为https端口
   port: 8080
+  # SSL证书设置
+  ssl:
+    # 是否启用SSL证书
+    enabled: false
+    # 当开启SSL时，访问http时的端口，之后会被重定向到http端口
+    http-port: 8000
+    # key-store证书位置
+    key-store: keystore/default.keystore
+    # 证书密码
+    key-store-password: 123456
+    # 证书类型
+    key-store-type: jks
+    # 证书别名
+    key-alias: boot
   servlet:
     application-display-name: MioVerify Alpha
 spring:
@@ -86,7 +101,8 @@ mioverify:
     # 材质域名白名单，语法详见Yggdrasil API
     skin-domains:
       - 'baidu.com'
-    # 并没有实现SSL证书，这只是决定返回角色(Profile)加上的地址是否https开头
+    # 决定返回角色(Profile)加上的材质url是否https开头
+    # SSL请在相关配置单独设置
     use-https: false
     # 服务器域名，将会拼接在角色材质url中
     server-domain: localhost

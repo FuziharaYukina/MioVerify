@@ -17,6 +17,10 @@ import java.time.Duration;
 public class DataUtil implements InitializingBean {
     @Value("${server.port}")
     private int port;
+    @Value("${server.ssl.enabled}")
+    private boolean sslEnabled;
+    @Value("${server.ssl.http-port}")
+    private int httpPort;
     @Value("${mioverify.texture.storage-loc}")
     private Path texturesPath;
     @Value("${mioverify.texture.default-skin-loc}")
