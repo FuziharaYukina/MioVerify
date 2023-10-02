@@ -27,6 +27,7 @@ Yggdrasil API是一套规范，定义了如何实现身份验证。而MioVerify�
 * 材质上传和下载(待完善)
 * 以上功能均遵守Yggdrasil API
 * 扩展API：玩家角色注册(正在扩展)
+* SSL支持，https协议
 
 ## 开发工具
 
@@ -115,7 +116,7 @@ Yggdrasil API是一套规范，定义了如何实现身份验证。而MioVerify�
 "url": "https://xxx.com/texture/hash/{hash}"
 ```
 
-然而，MioVerify**并没有真正实现**SSL证书支持，此功能将会在后续加入。
+然而，如果要设置SSL支持，需要在配置中独立设置证书信息。
 
 特别地，如果要获取默认的皮肤(可以在skins文件夹下更改)，将会是以下：
 
